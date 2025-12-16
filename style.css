@@ -1,0 +1,273 @@
+/* ===============================
+   RESET & GLOBAL
+================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f5f5f5;
+  background: linear-gradient(120deg, #070821, #0b0b2e, #141e7f);
+  background-size: 300% 300%;
+  animation: bgMove 18s ease infinite;
+  overflow-x: hidden;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===============================
+   FLOATING GLOW BACKGROUND
+================================ */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(255,152,0,0.35), transparent 70%);
+  filter: blur(120px);
+  z-index: -1;
+  animation: floatGlow 20s infinite alternate;
+}
+
+body::before {
+  top: -150px;
+  left: -150px;
+}
+
+body::after {
+  bottom: -150px;
+  right: -150px;
+  animation-delay: 5s;
+}
+
+@keyframes floatGlow {
+  from { transform: translateY(0px); }
+  to { transform: translateY(80px); }
+}
+
+/* ===============================
+   HEADER (HERO)
+================================ */
+header {
+  text-align: center;
+  padding: 90px 20px 70px;
+  background: linear-gradient(135deg, rgba(20,30,127,0.9), rgba(11,11,46,0.95));
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+header h1 {
+  font-size: 46px;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+header .tagline {
+  color: #ffb347;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+header p {
+  color: #d0d4ff;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+nav {
+  background: rgba(8,10,50,0.85);
+  backdrop-filter: blur(14px);
+  padding: 14px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 18px;
+  font-weight: 600;
+  font-size: 15px;
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff9800, #ffc107);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===============================
+   SECTIONS
+================================ */
+section {
+  padding: 60px 20px;
+  max-width: 1150px;
+  margin: auto;
+  position: relative;
+}
+
+section::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9800, transparent);
+  margin-top: 25px;
+}
+
+/* ===============================
+   HEADINGS & TEXT
+================================ */
+h2 {
+  color: #ffb347;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+p {
+  color: #d9dbff;
+  line-height: 1.7;
+  margin: 8px 0;
+}
+
+/* ===============================
+   LISTS
+================================ */
+ul {
+  padding-left: 22px;
+  margin: 12px 0;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+/* ===============================
+   GRID
+================================ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 26px;
+  margin-top: 25px;
+}
+
+/* ===============================
+   CARDS (PREMIUM GLASS)
+================================ */
+.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(14px);
+  padding: 26px;
+  border-radius: 18px;
+  text-align: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.card:hover::before {
+  transform: translateX(100%);
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.45);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #ffffff;
+}
+
+/* ===============================
+   BUTTONS (CTA)
+================================ */
+.btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 11px 24px;
+  background: linear-gradient(135deg, #ff9800, #ffc107);
+  color: #000;
+  text-decoration: none;
+  border-radius: 40px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 28px rgba(255,152,0,0.55);
+}
+
+/* ===============================
+   NOTE TEXT
+================================ */
+.note {
+  margin-top: 18px;
+  color: #bbb;
+  font-size: 14px;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+  text-align: center;
+  padding: 24px;
+  background: #050617;
+  color: #aaa;
+  font-size: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 34px;
+  }
+
+  nav a {
+    margin: 0 10px;
+    font-size: 14px;
+  }
+
+  section {
+    padding: 45px 16px;
+  }
+}
