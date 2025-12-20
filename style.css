@@ -1,8 +1,14 @@
+/* ================= GLOBAL RESET ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Segoe UI", Arial, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -192,18 +198,70 @@ footer {
   border-top: 1px solid #d4af37;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= MOBILE RESPONSIVE ================= */
 @media (max-width: 768px) {
+
+  .navbar {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .navbar ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .navbar h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero {
+    padding: 80px 15px;
+  }
+
+  .hero-logo {
+    width: 120px;
+  }
+
   .hero h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
+  }
+
+  .tagline {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  section {
+    padding: 60px 15px;
   }
 
   section h2 {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
   }
 
-  .cards,
-  .links {
+  section p {
+    font-size: 1.1rem;
+  }
+
+  .cards {
     flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .links a {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
   }
 }
