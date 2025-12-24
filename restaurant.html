@@ -115,7 +115,7 @@ function placeOrder() {
     items += `${item} x ${cart[item].qty}, `;
   }
 
-  fetch("https://script.google.com/macros/s/AKfycbzrBdOwjC1FdVyrCm2Ov-sdz-x-TsWH0697aZG7BcIaPSA0_QM9R7jJdohf4QQJfJ75FA/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbyVJKvHqohJZN1QYFqNOmc3NaE6UbbXKAvVo9eNMf4DNikEuEntQ1Q59RS5ZL0H2Ziwow/exec", {
     method: "POST",
     body: JSON.stringify({
       name, phone, address, items, total
@@ -134,3 +134,4 @@ function placeOrder() {
 
 </body>
 </html>
+
