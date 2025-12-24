@@ -7,36 +7,27 @@
   <link rel="stylesheet" href="../style.css">
 
   <style>
-    .menu {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 600px;
-      margin: auto;
-    }
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      background: white;
-      padding: 15px 20px;
-      border-radius: 10px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-    }
+    body { background:#0b0b0b; color:#fff; }
+    .cards { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+    .card { background:#000; padding:20px; border-radius:12px; width:240px; border:1px solid gold; }
+    .btn { background:gold; color:black; padding:10px 20px; border-radius:25px; cursor:pointer; display:inline-block; font-weight:700; }
+    #cartItems p { margin:8px 0; }
+    input, textarea { border-radius:8px; border:none; }
   </style>
 </head>
+
 <body>
 
 <header class="hero">
   <h1>TasteHub Restaurant</h1>
   <p class="tagline">Good Food • Good Mood</p>
-  <a class="btn">Reserve Table</a>
 </header>
 
-<section id="menu">
+<!-- MENU -->
+<section>
   <h2>Food Menu</h2>
 
   <div class="cards">
-
     <div class="card">
       <h3>Veg Biryani</h3>
       <p>₹180</p>
@@ -60,37 +51,55 @@
       <p>₹40</p>
       <button class="btn" onclick="addToCart('Butter Naan',40)">Add</button>
     </div>
-
   </div>
 </section>
 
- <section id="cart" class="about">
+<!-- CART -->
+<section class="about">
   <h2>Your Cart</h2>
 
   <div id="cartItems"></div>
-
   <h3>Total: ₹<span id="total">0</span></h3>
 
-  <input type="text" id="name" placeholder="Your Name" style="width:90%;padding:12px;"><br><br>
-  <input type="text" id="phone" placeholder="Phone Number" style="width:90%;padding:12px;"><br><br>
-  <textarea id="address" placeholder="Delivery Address" style="width:90%;padding:12px;"></textarea><br><br>
+  <input id="name" placeholder="Your Name" style="width:90%;padding:12px"><br><br>
+  <input id="phone" placeholder="Phone Number" style="width:90%;padding:12px"><br><br>
+  <textarea id="address" placeholder="Delivery Address" style="width:90%;padding:12px"></textarea><br><br>
 
-  <a class="btn" onclick="placeOrder()">Place Order via WhatsApp</a>
+  <button class="btn" onclick="placeOrder()">Place Order via WhatsApp</button>
 </section>
 
-
-<section class="contact">
-  <h2>Visit Us</h2>
-  <p>📍 City Center</p>
-  <p>📞 9988776655</p>
-  <h3>Scan to View Menu & Order</h3>
-<img src="restaurant-qr.png"
-     alt="Restaurant QR Code"
-     style="width:180px;margin-top:15px;border-radius:12px;">
-
-  <a href="../index.html" class="btn">Back to BBRISERS</a>
-</section>
 <script>
+/* ===== CART LOGIC ===== */
+let cart = {};
+let total = 0;
+
+function addToCart(item, price) {
+  if (!cart[item]) {
+    cart[item] = { price: price, qty: 1 };
+  } else {
+    cart[item].qty++;
+  }
+  updateCart();
+}
+
+function updateCart() {
+  let cartDiv = document.getElementById("cartItems");
+  cartDiv.innerHTML = "";
+  total = 0;
+
+  for (let item in cart) {
+    let itemTotal = cart[item].price * cart[item].qty;
+    total += itemTotal;
+
+    cartDiv.innerHTML += `
+      <p>${item} × ${cart[item].qty} = ₹${itemTotal}</p>
+    `;
+  }
+
+  document.getElementById("total").innerText = total;
+}
+
+/* ===== PLACE ORDER ===== */
 function placeOrder() {
   let name = document.getElementById("name").value;
   let phone = document.getElementById("phone").value;
@@ -101,49 +110,27 @@ function placeOrder() {
     return;
   }
 
-  let orderItems = "";
+  let items = "";
   for (let item in cart) {
-    orderItems += `${item} × ${cart[item].qty} = ₹${cart[item].price * cart[item].qty}\n`;
+    items += `${item} x ${cart[item].qty}, `;
   }
-
-  let data = {
-    name: name,
-    phone: phone,
-    address: address,
-    items: orderItems,
-    total: total
-  };
 
   fetch("https://script.google.com/macros/s/AKfycbzrBdOwjC1FdVyrCm2Ov-sdz-x-TsWH0697aZG7BcIaPSA0_QM9R7jJdohf4QQJfJ75FA/exec", {
     method: "POST",
-    body: JSON.stringify(data)
+    body: JSON.stringify({
+      name, phone, address, items, total
+    })
   });
 
-  let message =
-    "New Order\n\n" +
-    "Name: " + name + "\n" +
-    "Phone: " + phone + "\n" +
-    "Address: " + address + "\n\n" +
-    "Order:\n" + orderItems +
-    "\nTotal: ₹" + total;
+  let msg =
+    `New Order\n\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\n\nItems:\n${items}\nTotal: ₹${total}`;
 
-  window.open("https://wa.me/917483343817?text=" + encodeURIComponent(message), "_blank");
+  window.open(
+    "https://wa.me/917483343817?text=" + encodeURIComponent(msg),
+    "_blank"
+  );
 }
 </script>
 
-
-
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
