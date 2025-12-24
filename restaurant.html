@@ -91,6 +91,7 @@
   <a href="../index.html" class="btn">Back to BBRISERS</a>
 </section>
 <script>
+<script>
 let cart = [];
 let total = 0;
 
@@ -100,6 +101,7 @@ function addToCart(item, price) {
 
   document.getElementById("cartItems").innerHTML =
     cart.map(i => `<p>${i}</p>`).join("");
+
   document.getElementById("total").innerText = total;
 }
 
@@ -113,37 +115,48 @@ function placeOrder() {
     return;
   }
 
-  fetch("https://script.google.com/macros/s/AKfycbyBy5Ci_55WteyBqRQRe_U1t0Y5lefTiBfhvzXN4KRrUaSfEZPuzhPnzZ66fPlSNqv8sQ/exec", {
+  const orderData = {
+    customer: name,
+    phone: phone,
+    items: cart.join(", "),
+    address: address,
+    total: total
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbzrBdOwjC1FdVyrCm2Ov-sdz-x-TsWH0697aZG7BcIaPSA0_QM9R7jJdohf4QQJfJ75FA/exec", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      customer: name,
-      phone: phone,
-      items: cart.join(", "),
-      total: total,
-      address: address
-    })
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(orderData)
   })
-  .then(res => res.text())
+  .then(res => res.json())
   .then(data => {
-    alert("Order placed successfully!");
-    cart = [];
-    total = 0;
-    document.getElementById("cartItems").innerHTML = "";
-    document.getElementById("total").innerText = "0";
+    if (data.status === "success") {
+      alert("Order placed successfully!");
+
+      // OPTIONAL: WhatsApp message
+      const msg = `New Order\nName: ${name}\nPhone: ${phone}\nItems: ${cart.join(", ")}\nTotal: ₹${total}`;
+      window.open(`https://wa.me/917483343817?text=${encodeURIComponent(msg)}`, "_blank");
+
+      cart = [];
+      total = 0;
+      document.getElementById("cartItems").innerHTML = "";
+      document.getElementById("total").innerText = "0";
+    } else {
+      alert("Server error: " + data.message);
+    }
   })
   .catch(err => {
-    alert("Error placing order");
     console.error(err);
+    alert("Error placing order");
   });
 }
 </script>
 
 
+
 </body>
 </html>
+
 
 
 
