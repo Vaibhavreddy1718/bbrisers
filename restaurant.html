@@ -153,8 +153,57 @@ function placeOrder() {
   window.open("https://wa.me/7483343817?text=" + message, "_blank");
 }
 </script>
+<script>
+let cart = [];
+let total = 0;
+
+function addToCart(item, price) {
+  cart.push(item + " - ₹" + price);
+  total += price;
+
+  document.getElementById("cartItems").innerHTML =
+    cart.map(i => `<p>${i}</p>`).join("");
+
+  document.getElementById("total").innerText = total;
+
+  // store in localStorage (important)
+  localStorage.setItem("cart", cart.join(", "));
+  localStorage.setItem("total", total);
+}
+
+function placeOrder() {
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+
+  if (!name || !phone) {
+    alert("Please enter name and phone");
+    return;
+  }
+
+  const orderData = {
+    customer: name,
+    phone: phone,
+    items: localStorage.getItem("cart"),
+    total: localStorage.getItem("total"),
+    address: address
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbxbxN1NGZD2rjctCWGT2t_cGMBCgA3dyU7-1Kp07RVcRHLf7utsLqlEubye6Jb4EC04LQ/exec", {
+    method: "POST",
+    body: JSON.stringify(orderData)
+  })
+  .then(res => res.text())
+  .then(() => {
+    alert("✅ Order placed successfully!");
+    localStorage.clear();
+    location.reload();
+  });
+}
+</script>
 
 </body>
 </html>
+
 
 
