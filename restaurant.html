@@ -32,31 +32,39 @@
   <a class="btn">Reserve Table</a>
 </header>
 
-<section class="services">
-  <h2>Menu</h2>
+<section id="menu">
+  <h2>Food Menu</h2>
 
   <div class="cards">
+
+    <div class="card">
+      <h3>Veg Biryani</h3>
+      <p>₹180</p>
+      <button class="btn" onclick="addToCart('Veg Biryani',180)">Add</button>
+    </div>
+
     <div class="card">
       <h3>Chicken Biryani</h3>
-      <p>₹150</p>
-      <button class="btn" onclick="addToCart('Chicken Biryani', 150)">Add</button>
+      <p>₹250</p>
+      <button class="btn" onclick="addToCart('Chicken Biryani',250)">Add</button>
     </div>
 
     <div class="card">
       <h3>Paneer Butter Masala</h3>
-      <p>₹120</p>
-      <button class="btn" onclick="addToCart('Paneer Butter Masala', 120)">Add</button>
+      <p>₹220</p>
+      <button class="btn" onclick="addToCart('Paneer Butter Masala',220)">Add</button>
     </div>
 
     <div class="card">
       <h3>Butter Naan</h3>
       <p>₹40</p>
-      <button class="btn" onclick="addToCart('Butter Naan', 40)">Add</button>
+      <button class="btn" onclick="addToCart('Butter Naan',40)">Add</button>
     </div>
+
   </div>
 </section>
 
-  <section id="cart" class="about">
+ <section id="cart" class="about">
   <h2>Your Cart</h2>
 
   <div id="cartItems"></div>
@@ -83,71 +91,52 @@
   <a href="../index.html" class="btn">Back to BBRISERS</a>
 </section>
 <script>
-<script>
-let cart = [];
-let total = 0;
-
-function addToCart(item, price) {
-  cart.push(item + " ₹" + price);
-  total += price;
-
-  document.getElementById("cartItems").innerHTML =
-    cart.map(i => `<p>${i}</p>`).join("");
-
-  document.getElementById("total").innerText = total;
-}
-
 function placeOrder() {
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const address = document.getElementById("address").value;
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
 
-  if (!name || !phone || cart.length === 0) {
-    alert("Please fill all details and add items");
+  if (!name || !phone || total === 0) {
+    alert("Please add items and fill details");
     return;
   }
 
-  const orderData = {
-    customer: name,
+  let orderItems = "";
+  for (let item in cart) {
+    orderItems += `${item} × ${cart[item].qty} = ₹${cart[item].price * cart[item].qty}\n`;
+  }
+
+  let data = {
+    name: name,
     phone: phone,
-    items: cart.join(", "),
     address: address,
+    items: orderItems,
     total: total
   };
 
   fetch("https://script.google.com/macros/s/AKfycbzrBdOwjC1FdVyrCm2Ov-sdz-x-TsWH0697aZG7BcIaPSA0_QM9R7jJdohf4QQJfJ75FA/exec", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(orderData)
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === "success") {
-      alert("Order placed successfully!");
-
-      // OPTIONAL: WhatsApp message
-      const msg = `New Order\nName: ${name}\nPhone: ${phone}\nItems: ${cart.join(", ")}\nTotal: ₹${total}`;
-      window.open(`https://wa.me/917483343817?text=${encodeURIComponent(msg)}`, "_blank");
-
-      cart = [];
-      total = 0;
-      document.getElementById("cartItems").innerHTML = "";
-      document.getElementById("total").innerText = "0";
-    } else {
-      alert("Server error: " + data.message);
-    }
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Error placing order");
+    body: JSON.stringify(data)
   });
+
+  let message =
+    "New Order\n\n" +
+    "Name: " + name + "\n" +
+    "Phone: " + phone + "\n" +
+    "Address: " + address + "\n\n" +
+    "Order:\n" + orderItems +
+    "\nTotal: ₹" + total;
+
+  window.open("https://wa.me/917483343817?text=" + encodeURIComponent(message), "_blank");
 }
 </script>
 
 
 
+
 </body>
 </html>
+
 
 
 
