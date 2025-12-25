@@ -654,6 +654,68 @@ html {
   transform: translateY(0);
 }
 
+/* ==================================================
+   MOBILE TEXT ALIGNMENT FIX (CORPORATE)
+================================================== */
+@media (max-width: 768px) {
+
+  /* Force readable content column */
+  section,
+  .container {
+    max-width: 640px;
+    margin: auto;
+  }
+
+  /* Headings */
+  h1,
+  h2,
+  h3 {
+    text-align: left;
+    line-height: 1.3;
+  }
+
+  /* Paragraphs & lists */
+  p,
+  li {
+    text-align: left;
+    line-height: 1.7;
+  }
+
+  /* Section subtitles */
+  .section-subtitle {
+    text-align: left;
+    margin-left: 0;
+  }
+
+  /* Cards text */
+  .card,
+  .project-card,
+  .contact-card {
+    text-align: left;
+  }
+
+  /* Contact section fix */
+  .contact-title {
+    text-align: center; /* only heading centered */
+  }
+
+  .contact-card {
+    text-align: left;
+  }
+
+  /* Industries pills */
+  .industry,
+  .industry-pill {
+    text-align: center; /* pills only */
+  }
+
+  /* Buttons stay readable */
+  .btn {
+    text-align: center;
+    align-self: flex-start;
+  }
+}
+
 
 
 
