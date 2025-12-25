@@ -26,8 +26,8 @@
   <div class="hero-content">
     <h1>Empowering Small Businesses<br>Through Digital Excellence</h1>
     <p>
-      We help local businesses grow with professional websites, automation,
-      and long-term digital support.
+      We help local businesses grow with professional websites,
+      automation, and long-term digital support.
     </p>
     <a class="btn-primary" href="#contact">Get Started</a>
   </div>
@@ -39,13 +39,12 @@
     <div>
       <h2>Who We Are</h2>
       <p>
-        BBRISERS is a digital solutions company focused on helping
-        small and medium businesses build a strong online presence.
-        Our approach is simple, reliable, and growth-driven.
+        BBRISERS is a digital solutions company helping small and
+        medium businesses build a strong online presence.
       </p>
       <p>
         We combine technology, design, and business understanding
-        to deliver solutions that actually work.
+        to deliver reliable, growth-driven solutions.
       </p>
     </div>
     <img src="team.jpg" alt="Team working">
@@ -59,65 +58,60 @@
 
   <div class="container">
     <h2>Our Services</h2>
-
     <div class="cards">
       <div class="card">
         <h3>Website Development</h3>
-        <p>Professional, responsive, and business-ready websites.</p>
+        <p>Professional, responsive websites.</p>
       </div>
       <div class="card">
         <h3>Business Automation</h3>
-        <p>QR menus, online ordering, data systems.</p>
+        <p>QR menus & online ordering.</p>
       </div>
       <div class="card">
         <h3>Digital Presence</h3>
-        <p>Google setup, SEO basics, online visibility.</p>
+        <p>SEO basics & Google setup.</p>
       </div>
       <div class="card">
         <h3>Ongoing Support</h3>
-        <p>Maintenance, updates, and long-term assistance.</p>
+        <p>Maintenance & updates.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PROJECTS (HIDDEN BY DEFAULT) -->
 <section id="projects" class="projects-section hidden">
   <h2>Our Projects</h2>
   <p class="section-subtitle">
-    Sample digital solutions built for small and local businesses.
+    Sample digital solutions built for small businesses.
   </p>
 
   <div class="projects-grid">
-    <div class="project-card fade-up restaurant">
+    <div class="project-card restaurant">
       <h3>Restaurant Website</h3>
-      <p>Menu, WhatsApp ordering & Google Sheets integration.</p>
+      <p>Menu & WhatsApp ordering.</p>
       <a href="restaurant.html" class="btn">View</a>
     </div>
 
-    <div class="project-card fade-up grocery">
+    <div class="project-card grocery">
       <h3>Grocery Store</h3>
-      <p>Product listing, digital presence & contact setup.</p>
+      <p>Product listing & contact setup.</p>
       <a href="grocery.html" class="btn">View</a>
     </div>
 
-    <div class="project-card fade-up salon">
+    <div class="project-card salon">
       <h3>Salon Website</h3>
-      <p>Service display with booking & contact options.</p>
+      <p>Service booking website.</p>
       <a href="salon.html" class="btn">View</a>
     </div>
   </div>
 
-  <p class="note">
-    * Demo projects created for portfolio demonstration.
-  </p>
+  <p class="note">* Demo projects for portfolio only</p>
 </section>
 
-
-
 <!-- INDUSTRIES -->
-<section class="industries-section fade-up">
+<section id="industries" class="industries-section">
   <h2>Industries We Serve</h2>
-
   <div class="industries-grid">
     <div class="industry retail">Retail & Grocery</div>
     <div class="industry food">Hospitality & Food</div>
@@ -126,54 +120,24 @@
   </div>
 </section>
 
-<!-- QUALITY -->
-<section class="section dark">
-  <div class="bg-image" style="background-image:url('industries.jpg')"></div>
-  <div class="overlay"></div>
-
-  <div class="container">
-    <h2>Commitment to Quality</h2>
-    <p>
-      We follow structured delivery practices to ensure consistency,
-      reliability, and professional standards across every engagement.
-    </p>
-
-    <ul class="process">
-      <li>Requirement Assessment & Business Understanding</li>
-      <li>Solution Design & Planning</li>
-      <li>Development & Implementation</li>
-      <li>Deployment, Monitoring & Support</li>
-    </ul>
-  </div>
-</section>
-
 <!-- CONTACT -->
-<section class="section light fade-up" id="contact">
+<section id="contact" class="section light">
   <div class="container contact-container">
     <h2 class="contact-title">Contact Us</h2>
     <div class="contact-grid">
-
-      <!-- Founder -->
-      <div class="contact-card fade-up left">
+      <div class="contact-card">
         <h3>Founder</h3>
         <p class="name">Bharath B</p>
         <p>📞 9148584623</p>
-        <p>📧 bbrisers@gmail.com</p>
       </div>
-
-      <!-- Co-Founder -->
-      <div class="contact-card fade-up right">
+      <div class="contact-card">
         <h3>Co-Founder</h3>
         <p class="name">G R Vaibhav Reddy</p>
         <p>📞 8494960283</p>
-        <p>📧 bbrisers@gmail.com</p>
       </div>
-
     </div>
-
   </div>
 </section>
-
 
 <footer>
   © 2025 BBRISERS. All Rights Reserved.
@@ -187,28 +151,5 @@ function showProjects() {
 }
 </script>
 
-<script>
-const fadeElements = document.querySelectorAll(".fade-up");
-
-const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  },
-  { threshold: 0.15 }
-);
-
-fadeElements.forEach(el => observer.observe(el));
-</script>
-
 </body>
 </html>
-
-
-
-
-
-
