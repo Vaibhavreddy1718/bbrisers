@@ -573,6 +573,87 @@ textarea::placeholder {
     text-align: center;
   }
 }
+/* ==================================================
+   TCS-STYLE MOBILE POLISH
+================================================== */
+
+/* Smooth global scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Corporate motion */
+* {
+  transition: color 0.2s ease,
+              background 0.3s ease,
+              box-shadow 0.3s ease,
+              transform 0.35s ease;
+}
+
+/* Subtle card hover (desktop only) */
+@media (hover: hover) {
+  .card:hover,
+  .project-card:hover,
+  .contact-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  }
+}
+
+/* Mobile refinement */
+@media (max-width: 768px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  section {
+    padding: 60px 20px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+  /* Cards feel premium, not bulky */
+  .card,
+  .project-card,
+  .contact-card {
+    padding: 24px;
+    border-radius: 16px;
+  }
+
+  /* Buttons — corporate touch */
+  .btn {
+    padding: 12px 22px;
+    font-size: 14px;
+    border-radius: 30px;
+  }
+}
+
+/* ==================================================
+   SCROLL FADE ANIMATION (TCS STYLE)
+================================================== */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 
 
