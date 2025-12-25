@@ -182,81 +182,91 @@ footer {
 }
 
 /* ================= MOBILE FIXES ================= */
+/* ==================================================
+   MOBILE = DESKTOP-LIKE CORPORATE VIEW
+================================================== */
 @media (max-width: 768px) {
 
-  /* Global spacing */
+  body {
+    font-size: 15px;
+  }
+
   section {
-    padding: 50px 16px;
+    padding: 60px 20px;
   }
 
   h2 {
-    font-size: 24px;
-    text-align: center;
+    font-size: 26px;
+    text-align: left;
   }
 
   .section-subtitle {
-    text-align: center;
     font-size: 15px;
+    max-width: 90%;
   }
 
   /* NAVBAR */
   nav {
-    padding: 12px;
+    padding: 14px 18px;
   }
 
   nav a {
-    margin: 0 8px;
     font-size: 14px;
+    margin-left: 12px;
   }
 
-  /* PROJECTS */
+  /* PROJECTS — SAME CARDS, STACKED */
   .projects-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 22px;
+    max-width: 640px;
+    margin: auto;
   }
 
   .project-card {
-    width: 100%;
-    padding: 20px;
-    text-align: center;
+    padding: 26px;
+    border-radius: 16px;
   }
 
   .project-card h3 {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .project-card p {
-    font-size: 14px;
+    font-size: 15px;
+    line-height: 1.6;
   }
 
-  /* INDUSTRIES */
+  /* INDUSTRIES — PILL STYLE, DESKTOP FEEL */
   .industries-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 640px;
+    margin: auto;
   }
 
   .industry-pill {
-    width: 100%;
-    text-align: center;
+    padding: 16px;
     font-size: 14px;
-    padding: 14px;
+    border-radius: 14px;
   }
 
   /* BUTTONS */
   .btn {
-    width: 100%;
-    text-align: center;
-    padding: 12px;
+    padding: 12px 22px;
+    font-size: 14px;
+    width: auto;
   }
 
   /* NOTES */
   .note {
-    text-align: center;
     font-size: 13px;
+    max-width: 90%;
   }
 }
+
 
 /* PROJECTS VISIBILITY */
 .projects-section {
@@ -493,5 +503,6 @@ textarea::placeholder {
 #projects.active {
   display: block;
 }
+
 
 
