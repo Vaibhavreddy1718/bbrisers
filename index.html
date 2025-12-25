@@ -2,98 +2,173 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BBRISERS | Business Growth Maker</title>
+  <title>BBRISERS | Digital Growth Partner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar">
-  <div class="nav-brand">
-    <img src="bbrisers.png" alt="BBRISERS Logo">
-    <h2>BBRISERS</h2>
-  </div>
-
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- ================= HERO ================= -->
-<header class="hero">
-  <img src="bbrisers.png" alt="BBRISERS Logo" class="hero-logo">
-
-  <h1>BBRISERS</h1>
-  <p class="tagline">Business Growth Maker</p>
-  <p class="subtitle">Helping Small Scale Vendors Grow Online</p>
-
-  <a href="#contact" class="btn">Get Started</a>
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">BBRISERS</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="javascript:void(0)" onclick="showProjects()">Projects</a>
+    <a href="#industries">Industries</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-<!-- ================= ABOUT ================= -->
-<section id="about" class="about">
-  <h2>Who We Are</h2>
-  <p>
-    <b>
-      BBRISERS helps small businesses, startups, and local vendors
-      establish a strong online presence using professional websites,
-      digital tools, and smart growth strategies.
-    </b>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Empowering Small Businesses<br>Through Digital Excellence</h1>
+    <p>
+      We help local businesses grow with professional websites, automation,
+      and long-term digital support.
+    </p>
+    <a class="btn-primary" href="#contact">Get Started</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section light" id="about">
+  <div class="container two-col">
+    <div>
+      <h2>Who We Are</h2>
+      <p>
+        BBRISERS is a digital solutions company focused on helping
+        small and medium businesses build a strong online presence.
+        Our approach is simple, reliable, and growth-driven.
+      </p>
+      <p>
+        We combine technology, design, and business understanding
+        to deliver solutions that actually work.
+      </p>
+    </div>
+    <img src="images/team.jpg" alt="Team working">
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section dark" id="services">
+  <div class="bg-image" style="background-image:url('images/services.jpg')"></div>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <h2>Our Services</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Website Development</h3>
+        <p>Professional, responsive, and business-ready websites.</p>
+      </div>
+      <div class="card">
+        <h3>Business Automation</h3>
+        <p>QR menus, online ordering, data systems.</p>
+      </div>
+      <div class="card">
+        <h3>Digital Presence</h3>
+        <p>Google setup, SEO basics, online visibility.</p>
+      </div>
+      <div class="card">
+        <h3>Ongoing Support</h3>
+        <p>Maintenance, updates, and long-term assistance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="projects-section">
+  <h2>Our Projects</h2>
+  <p class="section-subtitle">
+    Sample digital solutions built for small and local businesses.
+  </p>
+
+  <div class="projects-grid">
+    <div class="project-card restaurant">
+      <h3>Restaurant Website</h3>
+      <p>Menu, WhatsApp ordering & Google Sheets integration.</p>
+      <a href="projects/restaurant.html" class="btn">View</a>
+    </div>
+
+    <div class="project-card grocery">
+      <h3>Grocery Store</h3>
+      <p>Product listing, digital presence & contact setup.</p>
+      <a href="projects/grocery.html" class="btn">View</a>
+    </div>
+
+    <div class="project-card salon">
+      <h3>Salon Website</h3>
+      <p>Service display with booking & contact options.</p>
+      <a href="projects/salon.html" class="btn">View</a>
+    </div>
+  </div>
+
+  <p class="note">
+    * Demo projects created for portfolio demonstration.
   </p>
 </section>
 
-<!-- ================= SERVICES ================= -->
-<section id="services" class="services">
-  <h2>Our Services</h2>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Website Development</h3>
-      <p>Premium, mobile-friendly websites designed to convert visitors into customers.</p>
-    </div>
 
-    <div class="card">
-      <h3>Online Business Setup</h3>
-      <p>Ready-to-launch solutions for grocery, restaurant & salon businesses.</p>
-    </div>
+<!-- INDUSTRIES -->
+<section class="industries-section">
+  <h2>Industries We Serve</h2>
 
-    <div class="card">
-      <h3>Digital Promotion</h3>
-      <p>Grow your reach through SEO, Google presence, and online marketing.</p>
-    </div>
+  <div class="industries-grid">
+    <div class="industry retail">Retail & Grocery</div>
+    <div class="industry food">Hospitality & Food</div>
+    <div class="industry service">Service Providers</div>
+    <div class="industry local">Local Enterprises</div>
   </div>
 </section>
 
-<!-- ================= PROJECTS ================= -->
-<section id="projects" class="projects">
-  <h2>Demo Working Projects</h2>
+<!-- QUALITY -->
+<section class="section dark">
+  <div class="bg-image" style="background-image:url('images/industries.jpg')"></div>
+  <div class="overlay"></div>
 
-  <div class="links">
-    <a href="grocery.html">🛒 Grocery Website</a>
-    <a href="restaurant.html">🍽 Restaurant Website</a>
-    <a href="salon.html">💇 Salon Website</a>
+  <div class="container">
+    <h2>Commitment to Quality</h2>
+    <p>
+      We follow structured delivery practices to ensure consistency,
+      reliability, and professional standards across every engagement.
+    </p>
+
+    <ul class="process">
+      <li>Requirement Assessment & Business Understanding</li>
+      <li>Solution Design & Planning</li>
+      <li>Development & Implementation</li>
+      <li>Deployment, Monitoring & Support</li>
+    </ul>
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="contact">
-  <h2>Contact Us</h2>
-  <p><strong>Founder & CEO:</strong> Bharath B</p>
-  <p>📞 +91 9148584623</p>
-  <p>📧 bbrisers@gmail.com</p>
-  <p><strong>Co-Founder:</strong> G R Vaibhav Reddy</p>
-  <p>📞 +91 8494960283</p>
+<!-- CONTACT -->
+<section class="section light" id="contact">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p><strong>Founder:</strong> Bharath B & G R Vaibhav Reddy</p>
+    <p>📞 9148584623 | 8494960283</p>
+    <p>📧 bbrisers@gmail.com</p>
+  </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
 <footer>
-  © 2025 BBRISERS | All Rights Reserved
+  © 2025 BBRISERS. All Rights Reserved.
 </footer>
+
+<script>
+function showProjects() {
+  const section = document.getElementById("projects");
+  section.classList.remove("hidden");
+  section.scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
 
 </body>
 </html>
-
