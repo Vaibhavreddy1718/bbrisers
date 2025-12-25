@@ -181,18 +181,80 @@ footer {
   padding: 20px;
 }
 
-/* MOBILE */
-@media(max-width: 768px) {
-  .navbar {
-    padding: 15px 25px;
+/* ================= MOBILE FIXES ================= */
+@media (max-width: 768px) {
+
+  /* Global spacing */
+  section {
+    padding: 50px 16px;
   }
 
-  .hero h1 {
-    font-size: 30px;
+  h2 {
+    font-size: 24px;
+    text-align: center;
   }
 
-  .two-col {
+  .section-subtitle {
+    text-align: center;
+    font-size: 15px;
+  }
+
+  /* NAVBAR */
+  nav {
+    padding: 12px;
+  }
+
+  nav a {
+    margin: 0 8px;
+    font-size: 14px;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
     grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .project-card {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .project-card h3 {
+    font-size: 18px;
+  }
+
+  .project-card p {
+    font-size: 14px;
+  }
+
+  /* INDUSTRIES */
+  .industries-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .industry-pill {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    padding: 14px;
+  }
+
+  /* BUTTONS */
+  .btn {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  /* NOTES */
+  .note {
+    text-align: center;
+    font-size: 13px;
   }
 }
 
@@ -431,4 +493,5 @@ textarea::placeholder {
 #projects.active {
   display: block;
 }
+
 
