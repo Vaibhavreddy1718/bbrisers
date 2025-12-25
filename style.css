@@ -245,3 +245,94 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+/* =========================
+   HERO – MOBILE CENTER FIX
+========================= */
+@media (max-width: 768px) {
+
+  .hero-content {
+    text-align: center;
+    padding: 30px 20px;
+    margin: auto;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* =========================
+   SERVICES – MOBILE CENTER
+========================= */
+@media (max-width: 768px) {
+
+  #services h2 {
+    text-align: center;
+  }
+
+  #services .cards {
+    justify-items: center;
+  }
+
+  #services .card {
+    text-align: center;
+  }
+}
+/* =========================
+   SERVICE CARD COLORS
+========================= */
+#services .card:nth-child(1) {
+  background: linear-gradient(135deg, #eaf2ff, #ffffff);
+  border-left: 5px solid #1f5eff;
+}
+
+#services .card:nth-child(2) {
+  background: linear-gradient(135deg, #eefcf4, #ffffff);
+  border-left: 5px solid #2bb673;
+}
+
+#services .card:nth-child(3) {
+  background: linear-gradient(135deg, #fff1e6, #ffffff);
+  border-left: 5px solid #ff8c42;
+}
+
+#services .card:nth-child(4) {
+  background: linear-gradient(135deg, #f3efff, #ffffff);
+  border-left: 5px solid #7a5cff;
+}
+
+#services .card h3 {
+  color: #0b2545;
+}
+
+#services .card p {
+  color: #4f5f78;
+}
+/* =========================
+   PROJECTS – MOBILE CENTER
+========================= */
+@media (max-width: 768px) {
+
+  .projects-section h2,
+  .projects-section .section-subtitle,
+  .projects-section .note {
+    text-align: center;
+  }
+
+  .projects-grid {
+    justify-items: center;
+  }
+
+  .project-card {
+    text-align: center;
+  }
+}
+/* Slight hover polish */
+#services .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+}
+
+
