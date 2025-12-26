@@ -1,137 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>TasteHub Restaurant</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../style.css">
+<meta charset="UTF-8">
+<title>TasteHub Restaurant</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body { background:#0b0b0b; color:#fff; }
-    .cards { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-    .card { background:#000; padding:20px; border-radius:12px; width:240px; border:1px solid gold; }
-    .btn { background:gold; color:black; padding:10px 20px; border-radius:25px; cursor:pointer; display:inline-block; font-weight:700; }
-    #cartItems p { margin:8px 0; }
-    input, textarea { border-radius:8px; border:none; }
-  </style>
+<style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f5f8fc;
+  color: #1f2933;
+}
+
+header {
+  text-align: center;
+  padding: 60px 20px;
+  background: #000;
+  color: #fff;
+}
+
+h1 { font-size: 40px; margin-bottom: 5px; }
+.tagline { color: #f5d77a; font-size: 18px; }
+
+section { padding: 40px 20px; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card h3 { margin: 10px 0; color: #0b2545; }
+
+.btn {
+  background: #0b5ed7;
+  color: #fff;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#cart {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+#cartItems p {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.total {
+  text-align: center;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+/* PAYMENT MODAL */
+#paymentModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+#paymentBox {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 320px;
+  width: 90%;
+}
+
+#paymentBox img {
+  width: 220px;
+  margin: 15px auto;
+}
+</style>
 </head>
 
 <body>
 
-<header class="hero">
+<header>
   <h1>TasteHub Restaurant</h1>
   <p class="tagline">Good Food • Good Mood</p>
 </header>
 
 <!-- MENU -->
 <section>
-  <h2>Food Menu</h2>
+<h2 style="text-align:center;color:#0b2545">Food Menu</h2>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Veg Biryani</h3>
-      <p>₹180</p>
-      <button class="btn" onclick="addToCart('Veg Biryani',180)">Add</button>
-    </div>
-
-    <div class="card">
-      <h3>Chicken Biryani</h3>
-      <p>₹250</p>
-      <button class="btn" onclick="addToCart('Chicken Biryani',250)">Add</button>
-    </div>
-
-    <div class="card">
-      <h3>Paneer Butter Masala</h3>
-      <p>₹220</p>
-      <button class="btn" onclick="addToCart('Paneer Butter Masala',220)">Add</button>
-    </div>
-
-    <div class="card">
-      <h3>Butter Naan</h3>
-      <p>₹40</p>
-      <button class="btn" onclick="addToCart('Butter Naan',40)">Add</button>
-    </div>
+<div class="cards">
+  <div class="card">
+    <h3>Veg Biryani</h3>
+    <p>₹180</p>
+    <button class="btn" onclick="addToCart('Veg Biryani',180)">Add</button>
   </div>
+  <div class="card">
+    <h3>Chicken Biryani</h3>
+    <p>₹250</p>
+    <button class="btn" onclick="addToCart('Chicken Biryani',250)">Add</button>
+  </div>
+  <div class="card">
+    <h3>Paneer Butter Masala</h3>
+    <p>₹220</p>
+    <button class="btn" onclick="addToCart('Paneer Butter Masala',220)">Add</button>
+  </div>
+  <div class="card">
+    <h3>Butter Naan</h3>
+    <p>₹40</p>
+    <button class="btn" onclick="addToCart('Butter Naan',40)">Add</button>
+  </div>
+</div>
 </section>
 
 <!-- CART -->
-<section class="about">
-  <h2>Your Cart</h2>
+<section id="cart">
+<h2 style="text-align:center;color:#0b2545">Your Cart</h2>
 
-  <div id="cartItems"></div>
-  <h3>Total: ₹<span id="total">0</span></h3>
+<div id="cartItems"></div>
 
-  <input id="name" placeholder="Your Name" style="width:90%;padding:12px"><br><br>
-  <input id="phone" placeholder="Phone Number" style="width:90%;padding:12px"><br><br>
-  <textarea id="address" placeholder="Delivery Address" style="width:90%;padding:12px"></textarea><br><br>
+<div class="total">
+  Total: ₹<span id="total">0</span>
+</div>
 
-  <button class="btn" onclick="placeOrder()">Place Order via WhatsApp</button>
+<input id="name" placeholder="Your Name">
+<input id="phone" placeholder="Phone Number">
+<textarea id="address" placeholder="Delivery Address"></textarea>
+
+<button class="btn" id="payBtn">Pay & Place Order</button>
+
+<button class="btn" id="confirmBtn" style="display:none;margin-top:10px">
+  Confirm Order & Send WhatsApp
+</button>
 </section>
 
+<!-- PAYMENT MODAL -->
+<div id="paymentModal">
+  <div id="paymentBox">
+    <h3>Scan & Pay</h3>
+    <p style="font-size:14px;color:#555">Use any UPI app</p>
+    <img id="upiQR">
+  </div>
+</div>
+
 <script>
-/* ===== CART LOGIC ===== */
 let cart = {};
 let total = 0;
+let orderData = null;
 
-function addToCart(item, price) {
-  if (!cart[item]) {
-    cart[item] = { price: price, qty: 1 };
-  } else {
-    cart[item].qty++;
-  }
+/* ADD TO CART */
+function addToCart(item, price){
+  cart[item] ? cart[item].qty++ : cart[item] = {price, qty:1};
   updateCart();
 }
 
-function updateCart() {
-  let cartDiv = document.getElementById("cartItems");
-  cartDiv.innerHTML = "";
+/* UPDATE CART */
+function updateCart(){
+  const div = document.getElementById("cartItems");
+  div.innerHTML = "";
   total = 0;
 
-  for (let item in cart) {
-    let itemTotal = cart[item].price * cart[item].qty;
-    total += itemTotal;
-
-    cartDiv.innerHTML += `
-      <p>${item} × ${cart[item].qty} = ₹${itemTotal}</p>
-    `;
+  for(let item in cart){
+    let t = cart[item].price * cart[item].qty;
+    total += t;
+    div.innerHTML += `<p>${item} x ${cart[item].qty}<span>₹${t}</span></p>`;
   }
-
   document.getElementById("total").innerText = total;
 }
 
-/* ===== PLACE ORDER ===== */
-function placeOrder() {
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let address = document.getElementById("address").value;
+/* PAY & SHOW QR */
+document.getElementById("payBtn").onclick = function(){
 
-  if (!name || !phone || total === 0) {
+  const name = nameInput();
+  const phone = phoneInput();
+  const address = addressInput();
+
+  if(!name || !phone || total === 0){
     alert("Please add items and fill details");
     return;
   }
 
   let items = "";
-  for (let item in cart) {
-    items += `${item} x ${cart[item].qty}, `;
+  for(let i in cart){ items += `${i} x ${cart[i].qty}\n`; }
+
+  orderData = {name, phone, address, items, total};
+
+  const upi =
+`upi://pay?pa=vaibhavreddy64345@okaxis&pn=TasteHub Restaurant&am=${total}&cu=INR`;
+
+  if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    window.location.href = upi;
+  } else {
+    document.getElementById("upiQR").src =
+      "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
+      encodeURIComponent(upi);
+    document.getElementById("paymentModal").style.display = "flex";
   }
+};
 
-  fetch("https://script.google.com/macros/s/AKfycbyVJKvHqohJZN1QYFqNOmc3NaE6UbbXKAvVo9eNMf4DNikEuEntQ1Q59RS5ZL0H2Ziwow/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      name, phone, address, items, total
-    })
-  });
+/* CLOSE QR & SHOW CONFIRM */
+document.getElementById("paymentModal").onclick = function(e){
+  if(e.target === this){
+    this.style.display = "none";
+    document.getElementById("confirmBtn").style.display = "block";
+  }
+};
 
-  let msg =
-    `New Order\n\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\n\nItems:\n${items}\nTotal: ₹${total}`;
+/* CONFIRM ORDER */
+document.getElementById("confirmBtn").onclick = function(){
+
+  if(!orderData) return;
+
+  // SAVE TO GOOGLE SHEET (NO HEADERS)
+  fetch("https://script.google.com/macros/s/AKfycbwDnR_6F-HrIFTXgaJZ7CIGP8hv8vuJM2fQOIkhGeA_7Ohul1_WL1i5ADCdNdDDqS5Xww/exec", {
+  method: "POST",
+  body: JSON.stringify({
+    name: orderData.name,
+    phone: orderData.phone,
+    address: orderData.address,
+    items: orderData.items,
+    total: orderData.total,
+    paymentStatus: "Paid"
+  })
+});
+
+
+  const msg =
+`TasteHub Restaurant – Order Confirmed 
+
+Name: ${orderData.name}
+Phone: ${orderData.phone}
+Address: ${orderData.address}
+
+Order:
+${orderData.items}
+
+Total Paid: ₹${orderData.total}`;
 
   window.open(
     "https://wa.me/917483343817?text=" + encodeURIComponent(msg),
     "_blank"
   );
-}
+
+  cart = {};
+  updateCart();
+  orderData = null;
+  document.getElementById("confirmBtn").style.display = "none";
+  document.getElementById("name").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("address").value = "";
+};
+
+function nameInput(){ return document.getElementById("name").value.trim(); }
+function phoneInput(){ return document.getElementById("phone").value.trim(); }
+function addressInput(){ return document.getElementById("address").value.trim(); }
 </script>
 
 </body>
 </html>
-
