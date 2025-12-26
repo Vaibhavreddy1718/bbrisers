@@ -57,20 +57,20 @@ nav a:hover {
 
 .hero-content {
   position: relative;
-  max-width: 700px;
   padding: 60px;
-  color: #ffffff;
+  max-width: 700px;
+  color: #fff;
 }
 
 .hero h1 {
-  font-size: 44px;
-  margin-bottom: 20px;
+  font-size: 42px;
 }
 
 .hero p {
-  font-size: 18px;
+  margin-top: 15px;
   color: #dbe7ff;
 }
+
 
 .btn-primary {
   display: inline-block;
@@ -474,4 +474,5 @@ textarea::placeholder {
   border-radius: 16px;
   text-align: center;
 }
+
 
